@@ -1,42 +1,4 @@
-# Project Planning
-
-
-## App Flow
-
-
-### Classes
-* Trivia
-    * Properties
-        * String question
-        * String category
-        * String type
-        * String difficulty
-        * String answer
-    * Methods:
-        * getters/setters
-
-* TriviaDao
-    * Properties
-        * Properties properties
-    * Methods:
-        * validate()
-        * requestTriviaObject()
-            * Load in url from properties
-            * Send request 
-            * Process response
-            * Object map
-            * Return collection of TriviaObjects
-
-* Request Service Class
-    * Properties:
-    * Methods:
-        * validate()
-        * getTriviaObject()
-            * Return response
-
-### Testing
-* TriviaDaoTestClass
-    * methods:
-* RequestServiceTestClass
-    * methods:
-
+# Trivial Trivia Team Project
+Team project for Enterprise Java Class
+### Problem Statement
+Does Covid have you bored at home, need something to entertain yourself, and you love trivia? There is a need for entertainment for trivia lovers, and most trivia sites are outdated or not free. With our trivia web app, users will be able to choose options such as difficulty level, categories, and trivia questions in order to provide a good user experience and interface.
