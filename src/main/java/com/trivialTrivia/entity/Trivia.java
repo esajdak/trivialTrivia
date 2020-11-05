@@ -3,7 +3,7 @@ package com.trivialTrivia.entity;
 import lombok.*;
 
 @Getter @Setter @NoArgsConstructor
-@ToString @EqualsAndHashCode @RequiredArgsConstructor
+//@ToString @EqualsAndHashCode @RequiredArgsConstructor
 public class Trivia {
 
     private int numberOfQuestions;

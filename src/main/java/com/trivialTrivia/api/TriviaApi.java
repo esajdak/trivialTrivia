@@ -4,6 +4,7 @@ package com.trivialTrivia.api;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.trivialTrivia.entity.Trivia;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -14,37 +15,46 @@ import javax.ws.rs.core.MediaType;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Properties;
-
-import org.json.*;
 import util.PropertiesLoader;
 
 public class TriviaApi implements PropertiesLoader {
     private final Logger logger = LogManager.getLogger(this.getClass());
     protected Properties properties;
 
+    public ArrayList<String> getAllCategories() {
+        ArrayList<String> categories = new ArrayList<>();
+        return categories;
+    }
+
+    public ArrayList<String> getAllTypes() {
+        ArrayList<String> types = new ArrayList<>();
+        return types;
+    }
+
+    public ArrayList<String> getAllDifficulties() {
+        ArrayList<String> difficulties = new ArrayList<>();
+        return difficulties;
+    }
+
     /**
-     * make request to yelp api using geo locations, ands locations to db and
-     * returns location object with categories and addresses
-     * @param lat latitude of location
-     * @param lng longitude of location
-     * @param locationType category type for location
-     * @return array list of locations
+     * make request to trivia api using category, number of questions and type
+     * returns collection of trivia objects
+     * @return array list of trivia objects
      */
-//    public Location[] getLocationByGeoAndType(double lat, double lng, String locationType) {
-//
-//        properties = this.loadProperties("/api.properties");
-//        String url = properties.getProperty("yelp.url.base");
-//
-//        Client client = ClientBuilder.newClient();
-//        WebTarget target = client.target(url)
-//                .queryParam("term", locationType)
-//                .queryParam("latitude", lat)
-//                .queryParam("longitude", lng);
-//
-//        String response = target.request(MediaType.APPLICATION_JSON)
-//                .header("Authorization", properties.getProperty("yelp.api.key"))
-//                .get(String.class);
-//
+    public void getTrivia(String categoryId, String questionType, String difficulty, String amount) {
+
+        String stringRegex = "\\w+";
+
+        WebTarget target = buildRequestTarget(
+            Integer.parseInt(categoryId) > 9 && Integer.parseInt(categoryId) < 33 ? categoryId : null,
+            questionType.matches(stringRegex) ? questionType : null,
+            difficulty.matches(stringRegex) ? difficulty : null,
+            Integer.parseInt(amount) > 0 && Integer.parseInt(amount) < 51 ? amount : null
+        );
+
+        String response = target.request(MediaType.APPLICATION_JSON).get(String.class);
+        logger.info(target);
+        logger.info(response);
 //        //json object
 //        JSONArray businesses = new JSONObject(response).getJSONArray("businesses");
 //
@@ -71,5 +81,18 @@ public class TriviaApi implements PropertiesLoader {
 //        }
 //
 //        return locations;
-//    }
+    }
+
+    private WebTarget buildRequestTarget(String category, String questionType, String difficulty, String amount) {
+        properties = this.loadProperties("/api.properties");
+        String url = properties.getProperty("trivia.url.base");
+
+        Client client = ClientBuilder.newClient();
+
+        return client.target(url)
+            .queryParam(properties.getProperty("trivia.url.addon.amount"), amount)
+            .queryParam(properties.getProperty("trivia.url.addon.difficulty"), difficulty)
+            .queryParam(properties.getProperty("trivia.url.addon.type"), questionType)
+            .queryParam(properties.getProperty("trivia.url.addon.categories"), category);
+    }
 }
