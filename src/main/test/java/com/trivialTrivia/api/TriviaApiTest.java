@@ -1,5 +1,6 @@
-package com.trivialTrivia.api;
+package java.com.trivialTrivia.api;
 
+import com.trivialTrivia.api.TriviaApi;
 import com.trivialTrivia.entity.Trivia;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
