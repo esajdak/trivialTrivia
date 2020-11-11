@@ -6,4 +6,5 @@ package com.trivialTrivia.persistence;
  */
 public class TriviaDaoTest {
 
+
 }
