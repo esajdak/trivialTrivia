@@ -1,4 +1,4 @@
-package java.com.trivialTrivia.persistence;
+package com.trivialTrivia.persistence;
 
 
 /**
