@@ -1,2 +1,8 @@
+# trailing from intellij
 .idea/*
+
+# logs
 /log/
+
+# trailing from mac
+.ds_store
