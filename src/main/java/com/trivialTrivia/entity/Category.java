@@ -1,13 +1,11 @@
 package com.trivialTrivia.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 @NoArgsConstructor
 @Getter @Setter @ToString
+@EqualsAndHashCode
 public class Category{
 
     @JsonProperty("name")
