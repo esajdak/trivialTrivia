@@ -1,4 +1,4 @@
-package java.com.trivialTrivia.api;
+package com.trivialTrivia.api;
 
 import com.trivialTrivia.api.TriviaApi;
 import com.trivialTrivia.entity.Trivia;
