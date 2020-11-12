@@ -44,21 +44,22 @@ const showResults = data => {
     const elementToAppend = document.querySelector("#resultsContainer");
     const list = document.createElement("ul");
     list.id = "results";
-    list.className = "list-unstyled col-12 d-flex flex-wrap justify-content-center my-0 p-0";
+    list.className = "list-unstyled col-12 d-flex flex-wrap my-0 p-0";
+
+    list.appendChild(document.createTextNode("["));
 
     if (Object.keys(test_data).length > 0) {
-        let count = 1;
         for (const trivia of test_data.triviaObjects) {
             const listItem = document.createElement("li");
-            listItem.textContent = count + "|\t" + JSON.stringify(trivia);
+            listItem.className = "col-12"
+            listItem.textContent = JSON.stringify(trivia);
 
             list.appendChild(listItem);
-
-            count += 1;
         }
 
         elementToAppend.replaceChild(list, elementToAppend.querySelector("#results"));
     }
+    list.appendChild(document.createTextNode("]"));
 }
 
 

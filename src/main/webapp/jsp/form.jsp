@@ -64,7 +64,7 @@
 
 <div class="p-3 my-1">
     <section class="border rounded shadow p-3 bg-light" id="resultsContainer">
-        <ul class="list-unstyled col-12 d-flex flex-wrap justify-content-center my-0 p-0" id="results">
+        <ul class="list-unstyled col-12 d-flex flex-wrap my-0 p-0" id="results">
         </ul>
     </section>
 </div>
