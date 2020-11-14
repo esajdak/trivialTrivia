@@ -1,92 +1,44 @@
 package com.trivialTrivia.persistence;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 
-import org.hibernate.Session;
+public class TriviApiDao implements PropertiesLoader {
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
-import java.util.List;
-
-/**
- * The type Trivi api dao.
- *
- * @param <T> the type parameter
- */
-public class TriviApiDao<T> {
-    private Class<T> type;
     private final  Logger logger =LogManager.getLogger(this.getClass());
+    protected  Properties properties;
 
-    /**
-     * Instantiates a new Trivi api dao.
-     *
-     * @param type the type
-     */
-    public TriviApiDao(Class<T> type) {
-        this.type = type;
+
+    public Trivia[] getTrivia(String category, String type, String difficulty) {
+
+        properties = this.loadProperties("/api.properties");
+        String url = properties.getProperty("trivia.url.base ");
+
+        Client client = ClientBulider,newClient();
+        WebTarget target = client.target(url).queryParam("category", category).queryParam("difficulty", difficulty).queryParam("type", type);
+
+        String response = target.request(MediaType.APPLICATION_JSON).get(String.class);
+
+        //json object
+        JSONArray questions = new JSONObject(response).getJSONArray("questions");
+
+        //instantiate and configure object mapper to use java array
+        ObjectMapper mapper = new ObjectMapper();
+
+        //configure mapper to use array and not fail on unused properties
+        mapper.configure(DeserializationFeature.USE_JAVA_ARRAY_FOR_JSON_ARRAY, true)
+                .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+
+
+        trivia[] trivias = null;
+
+        try {
+            trivias = mapper.readValue(questions.toString(), Trivia[].class);
+
+            Arrays.stream(questions).forEach();
+        }catch(JsonProceesingException e){
+            logger.error("trivia question request error " +  e)
+        }
+        return  questions;
     }
 
-    /**
-     * Instantiates a new Trivi api dao.
-     */
-    public TriviApiDao(){
 
-    }
-    private Session getSession(){
-        return SessionFactoryProvider.getSessionFactory().openSession();
-    }
-
-    /**
-     * Gets by id.
-     *
-     * @param <T> the type parameter
-     * @param id  the id
-     * @return the by id
-     */
-    public <T>T getById(int id) {
-        Session session = getSession();
-        T entity = (T)session.get(type, id);
-        session.close();
-        return entity;
-    }
-
-    /**
-     * Gets all.
-     *
-     * @return the all
-     */
-    public List<T> getAll() {
-        Session session = getSession();
-        CriteriaBuilder builder = session.getCriteriaBuilder();
-        CriteriaQuery<T> tquery = builder.createQuery(type);
-        Root<T> root = tquery.from(type);
-        List<T> list = session.createQuery(tquery).getResultList();
-        session.close();
-
-        return list;
-    }
-
-    /**
-     * Gets by property equal.
-     *
-     * @param propertyName the property name
-     * @param value        the value
-     * @return the by property equal
-     */
-    public List<T> getByPropertyEqual(String propertyName, String value) {
-
-        Session session = getSession();
-        logger.debug( propertyName + " = " + value);
-        CriteriaBuilder builder = session.getCriteriaBuilder();
-        CriteriaQuery<T> query = builder.createQuery(type);
-        Root<T> root = query.from(type );
-        query.select(root).where(builder.equal(root.get(propertyName), value));
-        List<T> entities = session.createQuery( query ).getResultList();
-
-        session.close();
-
-        return entities;
-    }
 }
