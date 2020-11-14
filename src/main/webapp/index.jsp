@@ -1,5 +1,8 @@
 <html>
 <body>
-<h2>Hello World!</h2>
+
+<%@ include file = "/jsp/documentation.jsp" %>
+
+<%@ include file = "/jsp/form.jsp" %>
 </body>
 </html>
