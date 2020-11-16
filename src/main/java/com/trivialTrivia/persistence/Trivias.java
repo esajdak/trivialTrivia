@@ -31,6 +31,6 @@ public class Trivias  {
         }
         return Response.ok().entity(response).build();
     }
-}
+
 }
 
