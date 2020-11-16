@@ -28,7 +28,7 @@ public class TriviApiDao implements PropertiesLoader {
                 .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
 
-        trivia[] trivias = null;
+        Trivia[] trivias = null;
 
         try {
             trivias = mapper.readValue(questions.toString(), Trivia[].class);
