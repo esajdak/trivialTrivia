@@ -1,5 +1,0 @@
-com/trivialTrivia/entity/Trivia.class
-com/trivialTrivia/entity/Category.class
-util/PropertiesLoader.class
-com/trivialTrivia/api/TriviaApi.class
-com/trivialTrivia/persistence/Trivias.class
