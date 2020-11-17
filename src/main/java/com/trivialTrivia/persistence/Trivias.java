@@ -16,7 +16,7 @@ import org.json.JSONObject;
 /**
  * The type Trivias.
  */
-@Path("/trivias")
+@Path("/trivia")
 public class Trivias  {
     private Logger logger = LogManager.getLogger(this.getClass());
 
@@ -31,6 +31,7 @@ public class Trivias  {
      */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
+    @Path("/request")
     public Response getTrivias(@QueryParam("triviaCategory") String category, @QueryParam("triviaAmount") String amount,
                                @QueryParam("triviaDifficulty") String difficulty, @QueryParam("triviaType") String type) {
         // instantiate trivia api

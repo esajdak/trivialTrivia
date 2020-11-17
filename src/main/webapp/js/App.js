@@ -11,19 +11,18 @@ export const TriviaApi = () => {
 
     // create url with params from form elements
     const url = "/TrivialTrivia/api/trivia/request/?" + $.param({
-        triviaAmount: searchForm.namedItem("triviaAmount").value,
         triviaCategory: searchForm.namedItem("triviaCategory").value,
+        triviaAmount: searchForm.namedItem("triviaAmount").value,
         triviaDifficulty: searchForm.namedItem("triviaDifficulty").value,
         triviaType: searchForm.namedItem("triviaType").value,
     });
 
-    // // send request for trivia, pass results to results showResults
-    // fetch(url, {headers: {'Content-type': 'application/json; charset=UTF-8', 'Accept': 'application/json'}})
-    //     .then(response => response.json()) // parse response as json
-    //     .then(data => showResults(data))// pass data to call back function
-    //     .catch(error => alert("Error sending request, try again." + " url: " + url));
-    const data = "";
-    showResults(data)
+    // send request for trivia, pass results to results showResults
+    fetch(url, {headers: {'Content-type': 'application/json; charset=UTF-8', 'Accept': 'application/json'}})
+        .then(response => response.json()) // parse response as json
+        .then(data => showResults(data))// pass data to call back function
+        .catch(error => alert("Error sending request, try again." + " url: " + url));
+
     return false;
 };
 
@@ -32,14 +31,6 @@ export const TriviaApi = () => {
  * @param data
  */
 const showResults = data => {
-    const test_data = {
-        triviaObjects: [
-            {category: "category", type: "type", difficulty: "difficulty", answer: "answer", question: "question"},
-            {category: "category", type: "type", difficulty: "difficulty", answer: "answer", question: "question"},
-            {category: "category", type: "type", difficulty: "difficulty", answer: "answer", question: "question"},
-        ]
-    }
-
     // build list container
     const elementToAppend = document.querySelector("#resultsContainer");
     const list = document.createElement("ul");
@@ -48,8 +39,8 @@ const showResults = data => {
 
     list.appendChild(document.createTextNode("["));
 
-    if (Object.keys(test_data).length > 0) {
-        for (const trivia of test_data.triviaObjects) {
+    if (data.map.hasOwnProperty("trivia")) {
+        for (const trivia of data.map.trivia) {
             const listItem = document.createElement("li");
             listItem.className = "col-12"
             listItem.textContent = JSON.stringify(trivia);
@@ -58,7 +49,10 @@ const showResults = data => {
         }
 
         elementToAppend.replaceChild(list, elementToAppend.querySelector("#results"));
+    } else if (data.map.hasOwnProperty("error")) {
+        alert("Error: " + data.map.error);
     }
+
     list.appendChild(document.createTextNode("]"));
 }
 
