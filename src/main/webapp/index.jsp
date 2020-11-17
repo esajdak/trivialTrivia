@@ -18,8 +18,6 @@
 <body>
 <div class="container-fluid">
     <%@ include file = "/jsp/documentation.jsp" %>
-
-    <%@ include file = "/jsp/form.jsp" %>
 </div>
 <script src="<c:url value="/js/App.js"/>" type="module"></script>
 </body>
