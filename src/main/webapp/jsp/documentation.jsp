@@ -6,7 +6,7 @@
     <h1>How to use this API:</h1>
     <p>
         To use this api you will need to add these query parameters:
-        <ul>
+        <ul style="text-align:left;">
             <li>category(optional) <b>use id number</b> - choices: Any Category (no param needed); 9 General Knowledge; 10 Entertainment: Books;
                 11 Entertainment: Film; 12 Entertainment: Music; 13 Entertainment: Musicals &amp; Theatres; 14 Entertainment: Television;
                 15 Entertainment: Video Games; 16 Entertainment: Board Games; 17 Science &amp; Nature; 18 Science: Computers;
