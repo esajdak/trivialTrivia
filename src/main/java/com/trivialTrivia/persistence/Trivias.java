@@ -12,9 +12,23 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONObject;
+
+/**
+ * The type Trivias.
+ */
 @Path("/trivias")
 public class Trivias  {
     private Logger logger = LogManager.getLogger(this.getClass());
+
+    /**
+     * Gets trivias.
+     *
+     * @param category   the category
+     * @param amount     the amount
+     * @param difficulty the difficulty
+     * @param type       the type
+     * @return the trivias
+     */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getTrivias(@QueryParam("triviaCategory") String category, @QueryParam("triviaAmount") String amount,
