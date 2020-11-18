@@ -5,7 +5,7 @@
     <br>
     <h1>How to use this API:</h1>
     <p>
-        To use this api you will need to add these query parameters:
+        To use this api you will need to add these query parameters with trivia prefixed using camel case:
         <ul style="text-align:left;">
             <li>category(optional) <b>use id number</b> - choices: Any Category (no param needed); 9 General Knowledge; 10 Entertainment: Books;
                 11 Entertainment: Film; 12 Entertainment: Music; 13 Entertainment: Musicals &amp; Theatres; 14 Entertainment: Television;
@@ -21,8 +21,8 @@
     </p>
     <p>
         <b>How to use the query parameters with the url:</b><br>
-        You will add them onto the end of the url like so /?category=9&type=boolean&difficulty=easy&amount=10<br>
-        If you choose to not specify any of the optional parameters all you would need is /?amount= and whatever amount of questions
+        You will add them onto the end of the url like so /?triviaCategory=9&triviaType=boolean&triviaDifficulty=easy&triviaAmount=10<br>
+        If you choose to not specify any of the optional parameters all you would need is /?triviaAmount= and whatever amount of questions
     </p>
     <p>
         <b>How will the data come back?</b><br>
