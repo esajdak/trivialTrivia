@@ -16,13 +16,12 @@
             </li>
             <li>type(optional)- choices: "multiple", "boolean" (true/false), "any" (no param needed)</li>
             <li>difficulty(optional)- choices: "easy", "medium", "hard", "any" (no param needed)</li>
-            <li>amount(required)- choices: any number 1 through 50</li>
+            <li>amount(optional)- choices: any number 1 through 50 - if not specified you will get a default of 50 questions</li>
         </ul>
     </p>
     <p>
         <b>How to use the query parameters with the url:</b><br>
         You will add them onto the end of the url like so /?triviaCategory=9&triviaType=boolean&triviaDifficulty=easy&triviaAmount=10<br>
-        If you choose to not specify any of the optional parameters all you would need is /?triviaAmount= and whatever amount of questions
     </p>
     <p>
         <b>How will the data come back?</b><br>
