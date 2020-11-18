@@ -34,7 +34,7 @@ public class Trivias  {
     @Path("/request")
     public Response getTrivias(@QueryParam("triviaCategory") @DefaultValue("") String category,
                                @QueryParam("triviaAmount") @DefaultValue("50") String amount,
-                               @QueryParam("triviaDifficulty") @DefaultValue("any") String difficulty,
+                               @QueryParam("triviaDifficulty") @DefaultValue("") String difficulty,
                                @QueryParam("triviaType") @DefaultValue("") String type) {
         // instantiate trivia api
         TriviaApi triviaApi = new TriviaApi();
