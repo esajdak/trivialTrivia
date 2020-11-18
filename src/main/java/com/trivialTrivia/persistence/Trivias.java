@@ -47,7 +47,10 @@ public class Trivias  {
         } else {
             response.put("error", "Error getting trivia questions, make sure request has params.");
         }
-        return Response.ok().entity(response).build();
+        return Response.ok().header("Access-Control-Allow-Origin", "*")
+                .header("Access-Control-Allow-Headers", "origin, content-type, accept")
+                .header("Access-Control-Allow-Methods", "GET")
+                .header("Access-Control-Max-Age", "1209600").entity(response).build();
     }
 
 }
