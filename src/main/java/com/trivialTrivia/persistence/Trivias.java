@@ -32,10 +32,10 @@ public class Trivias  {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/request")
-    public Response getTrivias(@QueryParam("triviaCategory") @DefaultValue("any") String category,
+    public Response getTrivias(@QueryParam("triviaCategory") @DefaultValue("") String category,
                                @QueryParam("triviaAmount") @DefaultValue("50") String amount,
-                               @QueryParam("triviaDifficulty") @DefaultValue("any") String difficulty,
-                               @QueryParam("triviaType") @DefaultValue("any") String type) {
+                               @QueryParam("triviaDifficulty") @DefaultValue("") String difficulty,
+                               @QueryParam("triviaType") @DefaultValue("") String type) {
         // instantiate trivia api
         TriviaApi triviaApi = new TriviaApi();
         // get trivia
@@ -47,10 +47,16 @@ public class Trivias  {
         } else {
             response.put("error", "Error getting trivia questions, make sure request has params.");
         }
-        return Response.ok().header("Access-Control-Allow-Origin", "*")
-                .header("Access-Control-Allow-Headers", "origin, content-type, accept")
-                .header("Access-Control-Allow-Methods", "GET")
-                .header("Access-Control-Max-Age", "1209600").entity(response).build();
+        return Response
+                .ok()
+                .header("Access-Control-Allow-Origin", "*")
+                .header("Access-Control-Allow-Credentials", "true")
+                .header("Access-Control-Allow-Headers",
+                        "origin, content-type, accept, authorization")
+                .header("Access-Control-Allow-Methods",
+                        "GET, POST, PUT, DELETE, OPTIONS, HEAD")
+                .entity(response)
+                .build();
     }
 
 }
