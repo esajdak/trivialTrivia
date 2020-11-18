@@ -32,19 +32,31 @@ public class Trivias  {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/request")
-    public Response getTrivias(@QueryParam("triviaCategory") String category, @QueryParam("triviaAmount") String amount,
-                               @QueryParam("triviaDifficulty") String difficulty, @QueryParam("triviaType") String type) {
+    public Response getTrivias(@QueryParam("triviaCategory") @DefaultValue("") String category,
+                               @QueryParam("triviaAmount") @DefaultValue("50") String amount,
+                               @QueryParam("triviaDifficulty") @DefaultValue("") String difficulty,
+                               @QueryParam("triviaType") @DefaultValue("") String type) {
         // instantiate trivia api
         TriviaApi triviaApi = new TriviaApi();
         // get trivia
         Trivia[] trivia = triviaApi.getTrivia(category, type, difficulty, amount);
+
         JSONObject response = new JSONObject();
         if (trivia.length > 0) {
             response.put("trivia", trivia);
         } else {
-            response.put("error", "No trivia questions found");
+            response.put("error", "Error getting trivia questions, make sure request has params.");
         }
-        return Response.ok().entity(response).build();
+        return Response
+                .ok()
+                .header("Access-Control-Allow-Origin", "*")
+                .header("Access-Control-Allow-Credentials", "true")
+                .header("Access-Control-Allow-Headers",
+                        "origin, content-type, accept, authorization")
+                .header("Access-Control-Allow-Methods",
+                        "GET, POST, PUT, DELETE, OPTIONS, HEAD")
+                .entity(response)
+                .build();
     }
 
 }
