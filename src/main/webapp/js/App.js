@@ -13,4 +13,6 @@ const addDropDown = event => {
     }
 }
 
+document.querySelector("form").addEventListener("submit", TriviaApi);
+
 window.onload = init;
