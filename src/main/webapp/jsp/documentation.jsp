@@ -5,7 +5,7 @@
     <br>
     <h1>How to use this API:</h1>
     <p>
-        Base url: http://3.139.187.82:8080/Trivial%20Trivia/api/trivia/request
+        Base url: http://3.139.187.82:8080/TrivialTrivia/api/trivia/request
         To use this api you will need to add these query parameters to the base url with "trivia" prefixed using camel case:
         For Example: to choose the category entertainment. You would use: http://3.139.187.82:8080/Trivial%20Trivia/api/trivia/request?triviaCategories=Entertainment
         <ul style="text-align:left;">
@@ -23,7 +23,7 @@
     </p>
     <p>
         <b>How to use the query parameters with the url:</b><br>
-        The base url to query is: http://3.139.187.82:8080/Trivial%20Trivia/api/trivia/request/
+        The base url to query is: http://3.139.187.82:8080/TrivialTrivia/api/trivia/request/
         You will add them onto the end of the url like so /?triviaCategory=9&triviaType=boolean&triviaDifficulty=easy&triviaAmount=10<br>
     </p>
     <p>
