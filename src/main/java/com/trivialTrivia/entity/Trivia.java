@@ -7,7 +7,6 @@ import lombok.*;
 @ToString @EqualsAndHashCode
 public class Trivia {
 
-    private int numberOfQuestions;
     @JsonProperty("category")
     private String category;
     @JsonProperty("type")
