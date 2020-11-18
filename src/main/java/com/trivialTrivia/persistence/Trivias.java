@@ -32,10 +32,10 @@ public class Trivias  {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/request")
-    public Response getTrivias(@QueryParam("triviaCategory") @DefaultValue("") String category,
+    public Response getTrivias(@QueryParam("triviaCategory") @DefaultValue("any") String category,
                                @QueryParam("triviaAmount") @DefaultValue("50") String amount,
                                @QueryParam("triviaDifficulty") @DefaultValue("any") String difficulty,
-                               @QueryParam("triviaType") @DefaultValue("") String type) {
+                               @QueryParam("triviaType") @DefaultValue("any") String type) {
         // instantiate trivia api
         TriviaApi triviaApi = new TriviaApi();
         // get trivia
