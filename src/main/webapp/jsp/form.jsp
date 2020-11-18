@@ -11,7 +11,7 @@
             <div class="form-group">
                 <label for="trivia-category">Select Category: </label>
                 <select name="triviaCategory" id="trivia-category" class="form-control">
-                    <option value="any">Any Category</option>
+                    <option value="">Any Category</option>
                     <option value="9">General Knowledge</option>
                     <option value="10">Entertainment: Books</option>
                     <option value="11">Entertainment: Film</option>
@@ -42,7 +42,7 @@
             <div class="form-group">
                 <label for="trivia-difficulty">Select Difficulty: </label>
                 <select name="triviaDifficulty" id="trivia-difficulty" class="form-control">
-                    <option value="any">Any Difficulty</option>
+                    <option value="">Any Difficulty</option>
                     <option value="easy">Easy</option>
                     <option value="medium">Medium</option>
                     <option value="hard">Hard</option>
@@ -52,7 +52,7 @@
             <div class="form-group">
                 <label for="trivia-type">Select Type: </label>
                 <select name="triviaType" id="trivia-type" class="form-control">&gt;
-                    <option value="any">Any Type</option>
+                    <option value="">Any Type</option>
                     <option value="multiple">Multiple Choice</option>
                     <option value="boolean">True / False</option>
                 </select>
