@@ -1,4 +1,10 @@
 ## Elizabeth ##
+High level overview of what I did:
+I wrote some of the tests for our classes and the Trivia entity. I did some of the pull request
+reviews and merging them in. Did some reverts in our code and some debugging. I
+set up our AWS instance and deployed our project there. A majority of my time was 
+spent debugging and deploying multiple times to make sure things worked.
+
 11/4-11/14:
 * About 1.5 hours - setting up the repository and getting the structure in place
 * about 30 minutes - writing the Trivia entity
